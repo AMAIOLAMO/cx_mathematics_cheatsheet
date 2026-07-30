@@ -1,0 +1,574 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+
+\usepackage{hyperref} % for clickable links
+\usepackage{amsfonts, amsmath, amssymb, amsthm} % math stuff
+\usepackage{graphicx} % images
+\graphicspath{ {./graphics/} }
+
+\author{CxRedix}
+
+
+\begin{document}
+
+\begin{center}
+    \Large\textbf{CxRedix's Mathematics Cheatsheet}
+\end{center}
+
+This cheatsheet serves as a collection of mathematical constructs
+that I found useful over the course of my learning.
+
+Most of the stuff shown here does not try to explain a certain concept
+in detail. It rather tries to \emph{supplement} you in remembering the most
+\emph{important aspects} of the given mathematical construct within a certain
+context.
+
+\begin{center}
+    \includegraphics[width=25em, height=25em]{title_graphics}
+\end{center}
+
+\begin{center}
+    \emph{Enjoy!}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+\pagebreak
+\section{Format of This Cheatsheet}
+
+I personally believe having a consistent format would help aid readers in obtaining information regarding a certain topic
+
+Every section would have it's own short description of it's most important properties.
+
+TODO
+
+\newpage
+\tableofcontents
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Operation Properties}
+
+\subsection{Associative Property}
+Statement:
+A binary operation $*$ on set $S$ is associative iff changing the order of which the operations are performed
+does not change the result.
+
+\begin{center}
+    $(x * y) * z = x * (y * z) ~~ \forall x,y,z \in S$
+\end{center}
+
+\subsection{Commutative Property}
+Statement:
+A binary operation $*$ on set $S$ is commutative iff changing the order of the operands does not change
+the result.
+
+\begin{center}
+    $x * y = y * x ~~ \forall x,y \in S$
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Trigonometry}
+
+TODO:
+fill in regular cos, sin, tan, cot, sec. Also fill in identities and properties.
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Linear Algebra}
+
+\subsection{Vectors}
+
+A vector denotes a list of values, it's mathematical definition is as follows:
+
+as a row vector
+\begin{center}
+    $\vec{v}=[a_1~a_2~a_3~...~a_n]$
+\end{center}
+
+or as a column vector
+\begin{center}
+    \[
+        {\vec{v}} = \begin{bmatrix}a_1 \\ a_2 \\ a_3 \\ \vdots \\ a_n\end{bmatrix}
+    \]
+\end{center}
+
+where:
+\begin{itemize}
+    \item $\vec{v}$: is the vector itself.
+    \item $n$: denoting the \textbf{dimensions} of the vector.
+    \item $a_i$: denoting the \textbf{$i$th} term of the vector.
+\end{itemize}
+
+\vspace{.5em}
+
+\emph{
+    NOTE: $i$ is often called the "index" or "subscript" of an element. For instance:
+    "$a_1$", here $1$ is the index that refers to the first element (assuming you start with $1$)
+}
+
+\vspace{1em}
+
+it's geometric representation states that a vector is a \textbf{relative displacement}:
+\begin{itemize}
+    \item $tail$: the start of the vector; can be understood as where this vector is coming from.
+    \item $head$: the end of the vector; can be understood as where this vector displaces to.
+    \item $magnitude$ / $length$: It's magnitude / length represents the amount of displacement, it's always non-negative,
+        that is $\forall \vec{v} (\|\vec{v}\| \geq 0)$
+    \item $direction$: A vector has a direction it's pointing towards.
+\end{itemize}
+
+\vspace{.5em}
+
+\emph{
+    NOTE: a vector does not have a position, it's always relative to something.
+    In other words, you can move the vector tail along with it's head everywhere as you see fit.
+}
+
+\subsubsection{Vector Properties}
+
+\textbf{Magnitude} of a vector in Eucledian Space(also referred to as Eucledian / Pythagorean Distance):
+\begin{center}
+    \[
+        \|\vec{v}\|=\|\begin{bmatrix}a_1 \\ a_2 \\ a_3 \\ \vdots \\ a_n\end{bmatrix}\|=\sqrt{a_1^2+a_2^2+a_3^2+...+a_n^2}
+    \]
+\end{center}
+
+As the name "Pythagorean Distance" suggests, the magnitude of a vector can be seen as the hypotenuse of a right triangle if we
+decompose it's axis individually. In which we can apply the pythagorean therorem to get the eucledian distance / length of the hypotenuse.
+
+\vspace{1em}
+
+A vector is said to be a \textbf{zero vector} if it's magnitude is exactly $0$:
+\begin{center}
+    \[
+        \|\vec{v}\|=0 \iff \vec{v}=\vec{0}=\begin{bmatrix}0 \\ 0 \\ \vdots \\ 0\end{bmatrix}
+    \]
+\end{center}
+
+The zero vector can be used to denote "no displacement" and it is an \textbf{additive identity}, in mathematical terms:
+\begin{center}
+    \[
+        \exists \vec{k} \forall \vec{v}(\vec{k}+\vec{v}=\vec{v})
+    \]
+\end{center}
+
+Here's $\vec{k}$ represents additive identity, which is exactly the zero vector $\vec{0}$.
+
+\vspace{1em}
+
+A vector is said to be a \textbf{unit vector} if it's magnitude is exactly $1$:
+\begin{center}
+    \[
+        \|\vec{v}\|=1
+    \]
+\end{center}
+
+Which we can denote this unit vector as a letter with a "hat" ("$\hat{v}$") indicating that it is a unit vector.
+
+Any non-zero vector($\|\vec{v}\| \neq 0$) can be turned into a unit vector by utilizing \textbf{Scalar Division}. (see section \nameref{sec:vector_operations} for more detail)
+
+A unit vector is very special as it can both mean "pure direction" or "a direction with a controllable magnitude".
+
+\vspace{1em}
+
+
+
+\subsubsection{Vector Operations}
+\label{sec:vector_operations}
+
+\textbf{Addition} and \textbf{Subtraction} of two vectors:
+\begin{center}
+    \[
+        {\vec{a}}\pm{\vec{b}}=\begin{bmatrix}a_1 \\ a_2 \\ \vdots \\ a_n\end{bmatrix} \pm \begin{bmatrix}b_1 \\ b_2 \\ \vdots \\ b_n\end{bmatrix}=\begin{bmatrix}a_1 \pm b_1 \\ a_2 \pm b_2 \\ \vdots \\ a_n \pm b_n\end{bmatrix}
+    \]
+\end{center}
+
+\vspace{.5em}
+
+\emph{
+    NOTE: The add and subtract operations of vectors are also known as "element-wise" operations.
+Because they do each operation for each element with the same index from both vectors.
+(Same principle should apply for both column and row vectors)
+}
+
+\vspace{1em}
+
+\textbf{Scalar Multiplication} of a vector and a scalar:
+\begin{center}
+    \[
+        {\vec{a}}k=k{\vec{a}}=k \begin{bmatrix}a_1 \\ a_2 \\ \vdots \\ a_n\end{bmatrix}=\begin{bmatrix}ka_1 \\ ka_2 \\ \vdots \\ ka_n\end{bmatrix}
+    \]
+\end{center}
+
+Scaling a vector by a scalar $k$ applies that scalar for every single element, which in turn scales the vector's magnitude by exactly $k$, in mathematical terms:
+\begin{center}
+    $\|k\vec{a}\|=k\|\vec{a}\|$
+\end{center}
+
+This can be utilized to scale a unit vector $\hat{n}$ by a desired amount of magnitude, since a unit vector's magnitude is defined as $1$, in mathematical terms:
+\begin{center}
+    $\|k\hat{n}\| = k$
+\end{center}
+
+Scaling a unit vector by a scalar $k$ simply just makes it have exactly the magnitude of $k$.
+
+
+\vspace{1em}
+
+\textbf{Scalar Division} of a vector and a scalar:
+\begin{center}
+    \[
+        \vec{a}=\begin{bmatrix}a_1 \\ a_2 \\ \vdots \\ a_n\end{bmatrix},\frac{\vec{a}}{k}=\begin{bmatrix}\frac{a_1}{k} \\ \frac{a_2}{k} \\ \vdots \\ \frac{a_n}{k}\end{bmatrix}
+    \]
+\end{center}
+
+This can be utilized to turn any non-zero vector into it's unit vector version by dividing the vector with it's own magnitude:
+\begin{center}
+    \[
+        {\hat{a}}=\frac{\vec{a}}{\|\vec{a}\|}
+    \]
+\end{center}
+
+\vspace{.5em}
+
+\emph{
+    NOTE: both \textbf{Scalar Multiplication} and \textbf{Scalar Division} are "inverse" of each other, in mathematical terms:
+}
+\begin{center}
+    \[
+        \frac{k\vec{v}}{k}=\vec{v}
+    \]
+\end{center}
+
+Applying the same scalar multiplied and divided gives back the original vector.
+
+
+
+\vspace{1em}
+
+\textbf{Inner Product / Dot Product}(also known as projection product) of two vectors:
+\begin{center}
+    \[
+        {\vec{a}} \cdot {\vec{b}}=\langle \vec{a}, \vec{b} \rangle=\begin{bmatrix}a_1 \\ a_2 \\ \vdots \\ a_n\end{bmatrix} \cdot \begin{bmatrix}b_1 \\ b_2 \\ \vdots \\ b_n\end{bmatrix}=a_1b_1+a_2b_2+a_3b_3+...+a_nb_n
+    \]
+\end{center}
+
+If we have an angle $\theta$ between two vectors, the inner / dot product of two vectors can be rewritten as
+\begin{center}
+    \[
+        {\vec{a}} \cdot {\vec{b}}=\langle \vec{a}, \vec{b} \rangle=\|\vec{a}\|\|\vec{b}\|cos~\theta
+    \]
+\end{center}
+
+The dot / inner product of two vectors $\vec{a}$ and $\vec{b}$ can be seen as the \textbf{length of the projection} of either $\vec{a}$ to $\vec{b}$ or vice versa(since dot product is commutative).
+
+If $\vec{a}$ and $\vec{b}$ are both unit vectors (i.e. $\|\vec{a}\| = 1, \|\vec{b}\| = 1$), then the above equation
+can be simplifed to $\hat{a} \cdot \hat{b}=cos~\theta$.
+
+\vspace{.5em}
+
+\emph{
+    NOTE: the dot / inner product is actually not a multiplication between two vectors due to the fact that
+    it returns a \textbf{scalar}, and not a \textbf{vector}. If one has to define multiplication, it has to satisfy the following:
+    $\vec{x} * \vec{y} = \vec{z} ~~ x,y,z \in \mathbb{S}^n$
+    but dot / inner product does this:
+    $\vec{x} * \vec{y} = s ~~ x,y \in \mathbb{S}^n, s \in \mathbb{R}$
+    In laymans' terms, two apples multiplied togethers should give an apple, and not something else.
+}
+
+\vspace{1em}
+\textbf{Cross Product}(also known as Vector Product / Directed Area Product) of two three-dimensional vectors in Eucledian space:
+\begin{center}
+    \[
+        {\vec{a}} \times {\vec{b}}=\begin{bmatrix}x \\ y \\ z\end{bmatrix} \times \begin{bmatrix}i \\ j \\ k\end{bmatrix}=\begin{bmatrix}ky - jz \\ iz - kx \\ jx - iy\end{bmatrix}
+    \]
+\end{center}
+
+Notice that, if you swap the operands, the result is entirely different:
+\begin{center}
+    \[
+        {\vec{b}} \times {\vec{a}}=\begin{bmatrix}i \\ j \\ k\end{bmatrix} \times \begin{bmatrix}x \\ y \\ z\end{bmatrix}=\begin{bmatrix}jz - ky \\ kx - iz \\ iy - jx\end{bmatrix}
+    \]
+\end{center}
+
+And actually is \textbf{anticommutative}:
+\begin{center}
+    \[
+        {\vec{a}} \times {\vec{b}}=-(\vec{b} \times \vec{a})
+    \]
+\end{center}
+
+The cross product of $\vec{a}$ to $\vec{b}$ returns a new vector $\vec{c}$ that is perpendicular to both vectors $\vec{a}$ and $\vec{b}$.
+
+If we define an angle $\theta$ between vectors $\vec{a}$ and $\vec{b}$, we can then find the magnitude of the cross product to be:
+\begin{center}
+    \[
+        {\|\vec{a}} \times {\vec{b}\|}=\|\vec{a}\|\|\vec{b}\| \lvert sin~\theta \rvert \footnote{
+            Notice that $sin~\theta$ is actually wrapped in absolute value, since the magnitude of a vector
+            must always be non negative.
+        }
+    \]
+\end{center}
+
+Which is equivalent to the area of the parallelogram formed by letting $\vec{a}$ and $\vec{b}$ be the two sides.
+
+
+
+\footnote{
+    Cross product only exists in dimensions of 3 and 7 in Eucledian space, see this for more detailed formulation and proof:
+    Cross Products of Vectors in Higher Dimensional Euclidean Spaces by W. S. Massey;
+    The American Mathematical Monthly, Vol. 90, No. 10 (Dec., 1983), pp. 697-701.
+}
+
+
+
+\subsubsection{Relations between Vectors and Points in Eucledian Space}
+In eucledian space, a point is defined as a tuple of values that define a unique position in space:\footnote{TODO: maybe move the definition of the point somewhere else?}
+\begin{center}
+    \[
+        P=\begin{pmatrix}p_1 & p_2 & p_3 & ... & p_n\end{pmatrix}
+    \]
+\end{center}
+
+A Vector on the other hand, represents a relative displacement, the point $P$ can actually be understood as the tip / head of the vector
+after the \textbf{relative displacement} is applied from the \textbf{origin} of where $P$ resides in:
+\begin{center}
+    \[
+        \vec{P}=\begin{bmatrix}p_1 \\ p_2 \\ p_3 \\ ... \\ p_n\end{bmatrix}
+    \]
+\end{center}
+
+Notice that the elements $p_i$ are of equivalent values. Because a point is essentially the origin point
+that got offset by some unique displacement(which can be represented by a vector).
+
+
+\subsubsection{Vector Decomposition}
+TODO: decomposition to it's indivdual axial basis vectors...
+
+
+\subsection{Matrix}
+
+
+\subsection{Ray}
+A \emph{ray} is defined as an infinite directional "ray" that has an
+\emph{origin}, and a \emph{direction}. It is mathematically defined as follows:
+
+\begin{center}
+    $P=O+\hat{D}t$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $P$: is any point along the ray.
+    \item $O$: is the origin of the ray, where it starts.
+    \item $\hat{D}$: is the unit vector representing the direction of the ray.
+    \item $t$: represents the percent / factor that "moves" the point along the ray.
+\end{itemize}
+
+If $t > 0$ then $P$ would be along the ray's direction $\hat{D}$.
+If $t < 0$ then $P$ would be along the negative ray's direction $-\hat{D}$.
+If $t = 0$ then $P$ would be exactly at the origin point $O$.
+
+\subsection{Plane}
+A plane is defined as all the points that resides at an equal level of length
+given a unit vector pointing in the direction in which it's facing.
+
+\begin{center}
+    $P \cdot \hat{n}+d=0$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $P$: is any point on the plane.
+    \item $\hat{n}$: is the unit vector that represents the direction / facing of the plane.
+    \item $d$: is the offset / distance of the plane from the origin along the direction $\hat{n}$ where it is facing.
+\end{itemize}
+
+\subsubsection{Ray-Plane Intersection}
+We can replace the $P$ in plane's formula with the Ray's formula with respect to points along the ray.
+
+\begin{center}
+    $(O + \hat{D}t) \cdot \hat{n} + d = 0$
+\end{center}
+
+Since, $O,\hat{D}$ and $\hat{n}$ are known when calculating the intersection,
+we solve for $t$:
+
+\begin{center}
+    $t = \frac{\hat{n} \cdot O - d}{\hat{n} \cdot \hat{D}}$
+\end{center}
+
+If $t \geq 0$ then the intersection is either at the beginning of the ray($t=0$) or
+in front of the ray.
+If $t < 0$ then the intersection is behind the ray's direction.
+
+\vspace{1em}
+
+If $\hat{n} \cdot \hat{D} = 0$ then we know that the ray is actually perpendicular with
+the plane's surface direction. It either misses entirely, or hits infinite points.
+
+\subsubsection{Plane from two different, non-zero vectors}
+You can also define a plane's facing direction with two different, non-zero vectors, in mathematical terms:
+
+\begin{center}
+    $\hat{n} = \frac{\vec{a} \times \vec{b}}{\|\vec{a} \times \vec{b}\|}$
+\end{center}
+
+where $\vec{a} \neq \vec{b}, \|\vec{a}\| \neq 0, \|\vec{b}\| \neq 0$
+
+
+\subsection{Sphere}
+A sphere is defined as all the points $P$ at an equal distance $r$
+from the center point $C$:
+
+\begin{center}
+    $\|P-C\|-r=0$
+\end{center}
+
+
+
+\subsection{Finite Rotations}
+
+\subsubsection{Euler-Rodrigues' Finite Rotation Formula}
+Euler-Rodrigues' Finite Rotation Formula states that given a vector $\vec{v}$, we can
+obtain the rotated vector $\vec{v'}$ by rotating it around an axis which is denoted by
+a unit vector $\hat{k}$ of an angle of $\theta$.
+
+\begin{center}
+    $\vec{v'}=\vec{v}~cos~\theta + (\hat{k} \times \vec{v})~sin~\theta + \hat{k}(\hat{k} \cdot \vec{v})(1 - cos~\theta)$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $\vec{v}$: is the vector to rotate.
+    \item $\vec{v'}$: is the resulting rotated vector along the axis.
+    \item $\hat{k}$: is the unit vector denoting the axis of rotation.
+    \item $\theta$: is the angle of rotation to apply to the vector around the axis $\hat{k}$.
+\end{itemize}
+
+It is also useful to define $\hat{k}$ with respect to two non-zero vectors $\vec{a}$ and $\vec{b}$ ($\vec{a} \neq \vec{b}$) which
+can denote a plane of rotation:
+
+\begin{center}
+    $\hat{k} = \frac{\vec{a} \times \vec{b}}{\|\vec{a} \times \vec{b}\|}$
+\end{center}
+
+\vspace{.5em}
+
+\emph{
+    NOTE: The formula shown above is more computationally efficient compared to
+    other means of rotation.
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Quaternions}
+Quaternions are four dimensional complex numbers that is defined as the following:
+
+\begin{center}
+    $Q = w + a\mathbf{i} + b\mathbf{j} + c\mathbf{k}=\begin{bmatrix}w & \begin{pmatrix}a & b & c\end{pmatrix}\end{bmatrix}=\begin{bmatrix}w & \vec{V}\end{bmatrix}$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $w, a, b, c$: are the real numbers $\mathbb{R}$ that denotes the weight of each axis in the complex number.
+    \item $\mathbf{i}, \mathbf{j}, \mathbf{k}$: are the axes representing the 2nd up to 4th dimensions. ($w$ is it's own dimension as well! In the real dimension :3)
+    \item satisfies $\mathbf{i}^2=\mathbf{j}^2=\mathbf{k}^2=\mathbf{ijk}=-1$
+\end{itemize}
+
+
+\subsubsection{Axis-Angle Representation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Geometric Algebra}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Useful resources and references}
+
+\begin{enumerate}
+    \item Book: \emph{3D Math Primer for Graphics and Game Development} by Fletcher Dunn and Ian Parberry
+\end{enumerate}
+
+
+\end{document}
