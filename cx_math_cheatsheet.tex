@@ -399,6 +399,7 @@ that got offset by some unique displacement(which can be represented by a vector
 
 \subsubsection{Vector Decomposition}
 TODO: decomposition to it's indivdual axial basis vectors...
+Also explain uniqueness of decomposition
 
 
 \subsubsection{Basis Vectors}
@@ -731,9 +732,44 @@ You can quickly observe that:
     \]
 \end{center}
 
+You can apply a rotation to a 3D point $P=\begin{pmatrix}x & y & z\end{pmatrix}$ by first promoting this
+point into a quaternion with the real component($w$) set to zero:
+\begin{center}
+    \[
+        P_q = \begin{bmatrix}0 & \begin{pmatrix}x & y & z\end{pmatrix}\end{bmatrix}
+    \]
+\end{center}
 
+Then apply this new promoted point quaternion in this "weird-looking" formula given a versor $Q$:
+\begin{center}
+    \[
+        P_q' = QP_qQ^{-1} = \begin{bmatrix}w' & \begin{pmatrix}x' & y' & z'\end{pmatrix}\end{bmatrix}
+    \]
+\end{center}
 
+The result new quaternion $P_q'$ should have the result rotated point $P'$ in it's vector component of $P_q'$.
+In mathematical terms:
+\begin{center}
+    \[
+        P' = \begin{pmatrix}x' & y' & z'\end{pmatrix}
+    \]
+\end{center}
 
+\vspace{1em}
+
+This formula can actually be applied multiple times consecutively to create a resulting rotational displacement
+that is the "sum" of all od each individual rotation:
+\begin{center}
+    \begin{flalign}
+        P_q & = b(aPa^{-1})b^{-1} \\
+            & = (ba)P(a^{-1}b^{-1}) \\
+            & = (ba)P(ba)^{-1}
+    \end{flalign}
+\end{center}
+
+The above equation applies the versor $a$ first on $P$, then applies versor $b$ afterwards.
+By rearranging, it is obvious that it is equivalent to simply rotating the combination of two
+versors $a$ and $b$.
 
 
 
