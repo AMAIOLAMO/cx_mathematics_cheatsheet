@@ -114,6 +114,9 @@ fill in regular cos, sin, tan, cot, sec. Also fill in identities and properties.
 
 \newpage
 \section{Linear Algebra}
+Linear Algebra is the study of adding things together, it studies how the "same type" of things
+when added, results in a new thing that is of the "same type".
+
 
 \subsection{Vectors}
 
@@ -374,7 +377,7 @@ Which is equivalent to the area of the parallelogram formed by letting $\vec{a}$
 
 
 
-\subsubsection{Relations between Vectors and Points in Eucledian Space}
+\subsubsection{Vectors and Points in Eucledian Space}
 In eucledian space, a point is defined as a tuple of values that define a unique position in space:\footnote{TODO: maybe move the definition of the point somewhere else?}
 \begin{center}
     \[
@@ -474,11 +477,11 @@ If $t < 0$ then $P$ would be along the negative ray's direction $-\hat{D}$.
 If $t = 0$ then $P$ would be exactly at the origin point $O$.
 
 \subsubsection{Plane}
-A plane is defined as all the points that resides at an equal level of length
-given a unit vector pointing in the direction in which it's facing.
+A plane can be defined in numerous ways.
 
+\textbf{Distance-Normal form}:
 \begin{center}
-    $P \cdot \hat{n}+d=0$
+    $P \cdot \hat{n} - d = 0$
 \end{center}
 
 where:
@@ -488,18 +491,36 @@ where:
     \item $d$: is the offset / distance of the plane from the origin along the direction $\hat{n}$ where it is facing.
 \end{itemize}
 
-\subsubsection{Ray-Plane Intersection}
-We can replace the $P$ in plane's formula with the Ray's formula with respect to points along the ray.
+The plane is defined here as all the points that resides at an equal level of length
+given a unit vector pointing in the direction in which it's facing.
+
+\vspace{1em}
+
+\textbf{Point-Normal form}:
+\begin{center}
+    $(P - D) \cdot \hat{n} = 0$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $P$: is any point on the plane.
+    \item $\hat{n}$: is the unit vector that represents the direction / facing of the plane.
+    \item $D$: is a known point on the plane.
+\end{itemize}
+
+
+\subsubsection{Ray-Plane Intersection for Distance-Normal Form}
+We can replace the $P$ in plane's Distance-Norm formula with the Ray's formula with respect to points along the ray.
 
 \begin{center}
-    $(O + \hat{D}t) \cdot \hat{n} + d = 0$
+    $(O + \hat{D}t) \cdot \hat{n} - d = 0$
 \end{center}
 
 Since, $O,\hat{D}$ and $\hat{n}$ are known when calculating the intersection,
 we solve for $t$:
 
 \begin{center}
-    $t = \frac{\hat{n} \cdot O - d}{\hat{n} \cdot \hat{D}}$
+    $t = \frac{d - \hat{n} \cdot O}{\hat{n} \cdot \hat{D}}$
 \end{center}
 
 If $t \geq 0$ then the intersection is either at the beginning of the ray($t=0$) or
@@ -511,6 +532,20 @@ If $t < 0$ then the intersection is behind the ray's direction.
 If $\hat{n} \cdot \hat{D} = 0$ then we know that the ray is actually perpendicular with
 the plane's surface direction. It either misses entirely, or hits infinite points.
 
+\vspace{1em}
+
+After figuring out a valid value for $t$, obtaining the point of intersection should be as simple as
+plugging(substituting) the value $t$ in the original Ray formula:
+
+\begin{center}
+    $P_{intersect}=O+\hat{D}t_{found}$
+\end{center}
+
+$P_{intersect}$ should be the exact point of intersection on the plane!
+
+\subsubsection{Ray-Plane Intersection for Point-Normal Form}
+TODO
+
 \subsubsection{Plane from two different, non-zero vectors}
 You can also define a plane's facing direction with two different, non-zero vectors, in mathematical terms:
 
@@ -521,6 +556,8 @@ You can also define a plane's facing direction with two different, non-zero vect
 where $\vec{a} \neq \vec{b}, \|\vec{a}\| \neq 0, \|\vec{b}\| \neq 0$
 
 
+
+
 \subsubsection{Sphere}
 A sphere is defined as all the points $P$ at an equal distance $r$
 from the center point $C$:
@@ -528,6 +565,16 @@ from the center point $C$:
 \begin{center}
     $\|P-C\|-r=0$
 \end{center}
+
+where:
+\begin{itemize}
+    \item $P$: is any point on the surface of the sphere.
+    \item $C$: is the center of the sphere.
+    \item $r$: is the radius of the circle, from the center $C$ to any point on the
+        surface of the sphere $P$.
+\end{itemize}
+
+\subsubsection{Ray-Sphere Intersection}
 
 
 
@@ -601,17 +648,88 @@ where:
     \item $w, a, b, c$: are the real numbers $\mathbb{R}$ that denotes the weight of each axis in the complex number.
     \item $\mathbf{i}, \mathbf{j}, \mathbf{k}$: are the axes representing the 2nd up to 4th dimensions. ($w$ is it's own dimension as well! In the real dimension :3)
     \item satisfies $\mathbf{i}^2=\mathbf{j}^2=\mathbf{k}^2=\mathbf{ijk}=-1$
+    \item $\vec{V}$: is referred to as the \textbf{vector component} of a quaternion.
+    \item $w$: is referred to as the \textbf{scalar component} of a quaternion.
 \end{itemize}
+
 
 
 \subsubsection{Quaternion Properties}
 
+\textbf{Magnitude} of a quaternion:
+\begin{center}
+    $\|Q\| = \|\begin{bmatrix}w & \vec{V}\end{bmatrix}\| = \sqrt{w^2 + \|\vec{V}\|^2}$
+\end{center}
 
-\subsubsection{Quaternions as Rotations for 3D spaces}
-TODO: Explain Unit Quaternions, Versors and Axis-Angle Representation
+If we define $\vec{V} = \begin{bmatrix}a & b & c\end{bmatrix}$ then:
+\begin{center}
+    $\|Q\| = \sqrt{w^2 + a^2 + b^2 + c^2}$
+\end{center}
+
+Which is similar to a four dimensional vector's eucledian / pythagorean distance.
+
+If the magnitude of a quaternion is $1$, then we call it a \textbf{unit quaternion}(similar to a unit vector).
+
+A unit quaternion is special, as it represents "pure rotation", or "rotational displacement" for
+three-dimensional spaces.
+
+\subsubsection{Quaternion Operations}
+\textbf{Scalar Multiplication} of a quaternion:
+\begin{center}
+    $kQ = k \begin{bmatrix}w & \vec{V}\end{bmatrix} =\begin{bmatrix}kw & k\vec{V}\end{bmatrix}$
+\end{center}
+
+
+\textbf{Scalar Division} of a quaternion:
+\begin{center}
+    $\frac{Q}{k} = \frac{\begin{bmatrix}w & \vec{V}\end{bmatrix}}{k} =\begin{bmatrix}\frac{w}{k} & \frac{1}{k}\vec{V}\end{bmatrix}$
+\end{center}
+
+\vspace{1em}
+\textbf{Conjugate} of a quaternion:
+\begin{center}
+    $Q^* = \begin{bmatrix}w & \vec{V}\end{bmatrix}^* =\begin{bmatrix}w & -\vec{V}\end{bmatrix}$
+\end{center}
+
+The conjugate of a quaternion simply negates the vector component of a quaternion.
+
+\vspace{1em}
+\textbf{Inverse} of a quaternion:
+\begin{center}
+    $Q^{-1} = \frac{Q^*}{\|Q\|^2}$
+\end{center}
+
+The inverse of a quaternion applies the "inverse" rotation of a regular quaternion.
+
+For a unit quaternion, due to the fact that it's magnitude being 1, it'd inverse
+is simply the conjugate of the quaternion.
 
 
 
+
+\subsubsection{Quaternions as Rotations for 3D spaces(Versors)}
+When we use unit quaternions for rotating vectors, points or objects in three-dimensional spaces
+it is called a "\textbf{versor}".
+
+A versor can be defined using \textbf{Angle-Axis Form}:
+\begin{center}
+    $q = \begin{bmatrix}w & \vec{V}\end{bmatrix}=\begin{bmatrix}cos~\frac{\theta}{2} & sin~\frac{\theta}{2}~\hat{n}\end{bmatrix}$
+\end{center}
+
+
+where:
+\begin{itemize}
+    \item $q$: is the versor itself(or the unit quaternion).
+    \item $\hat{n}$: the axis of rotation denoted as a unit vector.
+    \item $\theta$: the angle of rotation around the axis denoted by $\hat{n}$.
+\end{itemize}
+
+You can quickly observe that:
+\begin{center}
+    \[
+        w = cos~\frac{\theta}{2},~ \vec{V} = sin~\frac{\theta}{2} \hat{n}
+    \]
+\end{center}
 
 
 
@@ -628,6 +746,16 @@ TODO: Explain Unit Quaternions, Versors and Axis-Angle Representation
 
 
 
+
+
+
+
+\newpage
+\section{Phong Shading Model}
+
+
+\newpage
+\section{Blinn-Phong Shading Model}
 
 
 
