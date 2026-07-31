@@ -114,13 +114,81 @@ fill in regular cos, sin, tan, cot, sec. Also fill in identities and properties.
 
 \newpage
 \section{Linear Algebra}
-Linear Algebra is the study of adding things together, it studies how the "same type" of things
-when added, results in a new thing that is of the "same type".
+Linear Algebra is the study of adding things together, it mainly studies two important concepts:
+\begin{enumerate}
+    \item it studies how the "same type" of things when added, results in
+        a new thing that is of the "same type".
+
+    \item It also studies if you can multiply a "number" to a type of
+        thing, to produce a new thing of the same type.
+\end{enumerate}
+
+These "things" are then applicable by Linear Algebra, pretty cool concept!
+
+
+\begin{center}
+    \includegraphics[width=10em, height=10em]{linear_algebra_core}
+\end{center}
+
 
 
 \subsection{Vectors}
 
-A vector denotes a list of values, it's mathematical definition is as follows:
+\subsubsection{Vector Spaces}
+
+In an abstract sense, a \textbf{vector} is anything that satisfies the following properties of a \textbf{vector space}:
+
+If we have vectors in vector space $S$, then those vectors should
+satisfy the following axioms of addition and scalar multiplication:
+
+For Addition:
+\begin{enumerate}
+    \item Closed under addition: If $\vec{x}, \vec{y} \in S$ then $\vec{x} + \vec{y} \in S$.
+    \item Commutative law: If $\vec{x}, \vec{y} \in S$ then $\vec{x} + \vec{y} = \vec{y} + \vec{x}$.
+    \item Associative law: If $\vec{x}, \vec{y}, \vec{z} \in S$ then $(\vec{x} + \vec{y}) + \vec{z} = \vec{x} + (\vec{y} + \vec{z})$.
+
+    \item Existence of an additive identity: $\exists \vec{0} \in S, \forall \vec{v} \in S (\vec{v} + \vec{0} = \vec{v})$.
+    \item Exitence of an additive inverse: $\forall \vec{v} \in S (\vec{v} + (-\vec{v}) = \vec{0})$ where $\vec{0}$ is the additive identity.
+\end{enumerate}
+
+For Scalar Multiplication, If $a,b \in \mathbb{R}$ and $\vec{x}, \vec{y}, \vec{z}$ is in vector space $S$ then:
+\begin{enumerate}
+    \item Closed under scalar multiplication: $a\vec{v} \in S$
+    \item Distributive law for scalar: $a(\vec{x} + \vec{y}) = a\vec{x} + a\vec{y}$
+    \item Distributive law for vector: $(a + b)\vec{x} = a\vec{x} + b\vec{x}$
+
+    \item Scalar Associative law: $a(b\vec{x}) = (ab)\vec{x}$
+    \item Scalar multiplicative identity with 1: $1\vec{x} = \vec{x}$
+\end{enumerate}
+
+
+
+\subsubsection{Geometric Representation of Vectors}
+it's geometric representation states that a \textbf{vector} is a \textbf{directed segment} that can be used to indicate \textbf{relative displacement}:
+
+\begin{center}
+    \includegraphics[width=10em, height=10em]{geometric_vector_desc}
+\end{center}
+
+
+\begin{itemize}
+    \item $tail$: the start of the vector; can be understood as where this vector is coming from.
+    \item $head$: the end of the vector; can be understood as where this vector displaces to.
+    \item $magnitude$ / $length$: It's magnitude / length represents the amount of displacement, it's always non-negative,
+        that is $\forall \vec{v} (\|\vec{v}\| \geq 0)$
+    \item $direction$: A vector has a direction it's pointing towards.
+\end{itemize}
+
+\vspace{.5em}
+
+\emph{
+    NOTE: a vector does not have a position, it's always relative to something.
+    In other words, you can move the vector tail along with it's head everywhere as you see fit.
+}
+
+
+\subsubsection{The Very Important $\mathbb{R}^n$ Vector Space}
+A $\mathbb{R}^n$ vector denotes a list of values, it's mathematical definition is as follows:
 
 as a row vector
 \begin{center}
@@ -139,20 +207,8 @@ where:
     \item $\vec{v}$: is the vector itself.
     \item $n$: denoting the \textbf{dimensions} of the vector.
     \item $a_i$: denoting the \textbf{$i$th} term of the vector.
+    \item $\mathbb{R}^n$: denoting the "vector space"
 \end{itemize}
-
-If the vector is in Eucledian space, then we can also say that:
-\begin{center}
-    \[
-        \vec{v} \in \mathbb{R}^n
-    \]
-\end{center}
-
-where:
-\begin{itemize}
-    \item $\mathbb{R}^n$: is the set of all n-dimensional real vectors.(real as in all values are real numbers)
-\end{itemize}
-
 
 \vspace{.5em}
 
@@ -163,23 +219,8 @@ where:
 
 \vspace{1em}
 
-it's geometric representation states that a vector is a \textbf{relative displacement}:
-\begin{itemize}
-    \item $tail$: the start of the vector; can be understood as where this vector is coming from.
-    \item $head$: the end of the vector; can be understood as where this vector displaces to.
-    \item $magnitude$ / $length$: It's magnitude / length represents the amount of displacement, it's always non-negative,
-        that is $\forall \vec{v} (\|\vec{v}\| \geq 0)$
-    \item $direction$: A vector has a direction it's pointing towards.
-\end{itemize}
 
-\vspace{.5em}
-
-\emph{
-    NOTE: a vector does not have a position, it's always relative to something.
-    In other words, you can move the vector tail along with it's head everywhere as you see fit.
-}
-
-\subsubsection{Vector Properties}
+\subsubsection{$\mathbb{R}^n$ Vector Properties}
 
 \textbf{Magnitude} of a vector in Eucledian Space(also referred to as Eucledian / Pythagorean Distance):
 \begin{center}
@@ -228,7 +269,7 @@ A unit vector is very special as it can both mean "pure direction" or "a directi
 
 
 
-\subsubsection{Vector Operations}
+\subsubsection{$\mathbb{R}^n$ Vector Operations}
 \label{sec:vector_operations}
 
 \textbf{Addition} and \textbf{Subtraction} of two vectors:
@@ -377,7 +418,7 @@ Which is equivalent to the area of the parallelogram formed by letting $\vec{a}$
 
 
 
-\subsubsection{Vectors and Points in Eucledian Space}
+\subsubsection{$\mathbb{R}^n$ Vectors and Points in Eucledian Space}
 In eucledian space, a point is defined as a tuple of values that define a unique position in space:\footnote{TODO: maybe move the definition of the point somewhere else?}
 \begin{center}
     \[
@@ -404,20 +445,26 @@ Also explain uniqueness of decomposition
 
 \subsubsection{Basis Vectors}
 Basis vectors refer to special vectors that denote a specific
+TODO
 
 
 \subsection{Homogeneous Coordinates}
-
+TODO
 
 \subsection{Matrix}
+TODO
 
 \subsubsection{Matrix Properties}
+TODO
 
 \subsubsection{Matrix Operations}
+TODO
 
 \subsubsection{Matrix as a Combination of Vectors}
+TODO
 
 \subsubsection{Matrix as a Representation of Systems of Linear Equations}
+TODO
 
 \subsubsection{Matrix as a Means of Linear Transformation}
 TODO: explain Rotation, Scale, Shearing...
@@ -427,8 +474,10 @@ TODO: explain why translation is actually Shearing from a higher dimension proje
 to a dimension lower as translation...
 
 \subsubsection{Matrix for Transforming Between Two Eucledian Spaces}
+TODO
 
 \subsubsection{Projection Matricies}
+TODO
 
 \subsubsection{Useful Matrix Constructs}
 You can rotate an arbitrary point $A$ around another point $O$ by following these steps:
@@ -451,6 +500,11 @@ some pure rotational matrix around the origin. Which can be written mathematical
 
 In which you can now apply the final matrix $\textbf{M}$ on any point $A$ which effectively rotates it around $O$!
 
+\vspace{1em}
+You can create a matrix to convert from one Eucledian space $A$ to Eucledian space $B$ by filling a matrix with
+basis vectors per column of space $A$ relative to $B$, in mathematical terms:
+
+TODO
 
 
 
@@ -576,6 +630,7 @@ where:
 \end{itemize}
 
 \subsubsection{Ray-Sphere Intersection}
+TODO
 
 
 
@@ -633,6 +688,7 @@ can denote a plane of rotation:
 
 
 \section{Complex Numbers}
+TODO
 
 
 
@@ -702,7 +758,7 @@ The conjugate of a quaternion simply negates the vector component of a quaternio
 
 The inverse of a quaternion applies the "inverse" rotation of a regular quaternion.
 
-For a unit quaternion, due to the fact that it's magnitude being 1, it'd inverse
+For a unit quaternion, due to the fact that it's magnitude being 1, it's inverse
 is simply the conjugate of the quaternion.
 
 
@@ -777,6 +833,7 @@ versors $a$ and $b$.
 
 \newpage
 \section{Geometric Algebra}
+TODO
 
 
 
@@ -788,10 +845,12 @@ versors $a$ and $b$.
 
 \newpage
 \section{Phong Shading Model}
+TODO
 
 
 \newpage
 \section{Blinn-Phong Shading Model}
+TODO
 
 
 
