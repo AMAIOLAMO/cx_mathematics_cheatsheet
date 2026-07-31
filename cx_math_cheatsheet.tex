@@ -1,7 +1,8 @@
 \documentclass[12pt]{article}
 \usepackage[T1]{fontenc}
 
-\usepackage{hyperref} % for clickable links
+\usepackage{anysize}
+\marginsize{3em}{3em}{2em}{3em} % page margins, left, right, top, bottom
 \usepackage{amsfonts, amsmath, amssymb, amsthm} % math stuff
 \usepackage{graphicx} % images
 \graphicspath{ {./graphics/} }
@@ -113,10 +114,17 @@ the result.
 
 
 
+\newpage
+\section{Range Manipulation}
 
+\subsection{Intervals}
+TODO: explain mathematical definitions of intervals [a, b], (a, b) and in between
+explain how to do operations on them, and what they meant intuitively...
 
+Explain how intervals can be applied in functions to give a more complicated inter al
 
-
+Explain the limitations of intervals in terms of mathematical expression; Intervals can't explain distribution of values within it.
+It only explains the bounds.
 
 
 
@@ -161,16 +169,16 @@ These "things" are then applicable by Linear Algebra, pretty cool concept!
 
 \subsubsection{Vector Spaces}
 
-In an abstract sense, a \textbf{vector} is anything that satisfies the following properties of a \textbf{vector space}:
+In an abstract sense, a \textbf{vector} is anything that satisfies the following properties of a \textbf{vector space}.
 
 If we have vectors in vector space $S$, then those vectors should
 satisfy the following axioms of addition and scalar multiplication:
 
 For Addition:
 \begin{enumerate}
-    \item Closed under addition: If $\vec{x}, \vec{y} \in S$ then $\vec{x} + \vec{y} \in S$.
-    \item Commutative law: If $\vec{x}, \vec{y} \in S$ then $\vec{x} + \vec{y} = \vec{y} + \vec{x}$.
-    \item Associative law: If $\vec{x}, \vec{y}, \vec{z} \in S$ then $(\vec{x} + \vec{y}) + \vec{z} = \vec{x} + (\vec{y} + \vec{z})$.
+    \item Closed under addition: For all $\vec{x}, \vec{y} \in S$ such that $\vec{x} + \vec{y} \in S$.
+    \item Commutative law: For all $\vec{x}, \vec{y} \in S$ such that $\vec{x} + \vec{y} = \vec{y} + \vec{x}$.
+    \item Associative law: For all $\vec{x}, \vec{y}, \vec{z} \in S$ such that $(\vec{x} + \vec{y}) + \vec{z} = \vec{x} + (\vec{y} + \vec{z})$.
 
     \item Existence of an additive identity: $\exists \vec{0} \in S, \forall \vec{v} \in S (\vec{v} + \vec{0} = \vec{v})$.
     \item Exitence of an additive inverse: $\forall \vec{v} \in S (\vec{v} + (-\vec{v}) = \vec{0})$ where $\vec{0}$ is the additive identity.
@@ -184,7 +192,7 @@ For Scalar Multiplication, If $a,b \in \mathbb{R}$ and $\vec{x}, \vec{y}, \vec{z
 
     \item Scalar Associative law: $a(b\vec{x}) = (ab)\vec{x}$
     \item Scalar multiplicative identity with 1: $1\vec{x} = \vec{x}$
-\end{enumerate}
+\end{enumerate}\footnote{Make the syntax of this to be consistent with everything above}
 
 That is a lot of rules to satisfy!
 Anyhow, the most important space is $\mathbb{R}^n$, but at least know
@@ -246,7 +254,7 @@ where:
     "$a_1$", here $1$ is the index that refers to the first element (assuming you start with $1$)
 }
 
-\vspace{1em}
+\vspace{2.5em}
 
 
 \subsubsection{$\mathbb{R}^n$ Vector Properties}
@@ -261,7 +269,7 @@ where:
 As the name "Pythagorean Distance" suggests, the magnitude of a vector can be seen as the hypotenuse of a right triangle if we
 decompose it's axis individually. In which we can apply the pythagorean therorem to get the eucledian distance / length of the hypotenuse.
 
-\vspace{1em}
+\vspace{2.5em}
 
 A vector is said to be a \textbf{zero vector} if it's magnitude is exactly $0$:
 \begin{center}
@@ -279,7 +287,7 @@ The zero vector can be used to denote "no displacement" and it is an \textbf{add
 
 Here's $\vec{k}$ represents additive identity, which is exactly the zero vector $\vec{0}$.
 
-\vspace{1em}
+\vspace{2.5em}
 
 A vector is said to be a \textbf{unit vector} if it's magnitude is exactly $1$:
 \begin{center}
@@ -290,16 +298,15 @@ A vector is said to be a \textbf{unit vector} if it's magnitude is exactly $1$:
 
 Which we can denote this unit vector as a letter with a "hat" ("$\hat{v}$") indicating that it is a unit vector.
 
-Any non-zero vector($\|\vec{v}\| \neq 0$) can be turned into a unit vector by utilizing \textbf{Scalar Division}. (see section \nameref{sec:vector_operations} for more detail)
+Any non-zero vector($\|\vec{v}\| \neq 0$) can be turned into a unit vector by utilizing \textbf{Scalar Division}. (see section \textbf{Vector Operations} for more detail)
 
 A unit vector is very special as it can both mean "pure direction" or "a direction with a controllable magnitude".
 
-\vspace{1em}
+\vspace{2.5em}
 
 
 
 \subsubsection{$\mathbb{R}^n$ Vector Operations}
-\label{sec:vector_operations}
 
 \textbf{Addition} and \textbf{Subtraction} of two vectors:
 \begin{center}
@@ -316,7 +323,7 @@ Because they do each operation for each element with the same index from both ve
 (Same principle should apply for both column and row vectors)
 }
 
-\vspace{1em}
+\vspace{2.5em}
 
 \textbf{Scalar Multiplication} of a vector and a scalar:
 \begin{center}
@@ -338,7 +345,7 @@ This can be utilized to scale a unit vector $\hat{n}$ by a desired amount of mag
 Scaling a unit vector by a scalar $k$ simply just makes it have exactly the magnitude of $k$.
 
 
-\vspace{1em}
+\vspace{2.5em}
 
 \textbf{Scalar Division} of a vector and a scalar:
 \begin{center}
@@ -369,7 +376,7 @@ Applying the same scalar multiplied and divided gives back the original vector.
 
 
 
-\vspace{1em}
+\vspace{2.5em}
 
 \textbf{Inner Product / Dot Product}(also known as projection product) of two vectors:
 \begin{center}
@@ -401,13 +408,18 @@ can be simplifed to $\hat{a} \cdot \hat{b}=cos~\theta$.
     In laymans' terms, two apples multiplied togethers should give an apple, and not something else.
 }
 
-\vspace{1em}
+\vspace{2.5em}
 \textbf{Cross Product}(also known as Vector Product / Directed Area Product) of two three-dimensional vectors in Eucledian space:
 \begin{center}
     \[
         {\vec{a}} \times {\vec{b}}=\begin{bmatrix}x \\ y \\ z\end{bmatrix} \times \begin{bmatrix}i \\ j \\ k\end{bmatrix}=\begin{bmatrix}ky - jz \\ iz - kx \\ jx - iy\end{bmatrix}
     \]
 \end{center}
+
+The cross product of $\vec{a}$ to $\vec{b}$ returns a new vector $\vec{c}$ that is perpendicular to both vectors $\vec{a}$ and $\vec{b}$, it is
+then a valid kind of multiplication for vectors :D
+
+\vspace{2.5em}
 
 Notice that, if you swap the operands, the result is entirely different:
 \begin{center}
@@ -416,26 +428,33 @@ Notice that, if you swap the operands, the result is entirely different:
     \]
 \end{center}
 
-And actually is \textbf{anticommutative}:
+Therefore, it is actually \textbf{non-commutative} and actually is \textbf{anticommutative}:
 \begin{center}
     \[
-        {\vec{a}} \times {\vec{b}}=-(\vec{b} \times \vec{a})
+        {\vec{a}} \times {\vec{b}} \neq {\vec{b}} \times {\vec{a}},~{\vec{a}} \times {\vec{b}}=-(\vec{b} \times \vec{a})
     \]
 \end{center}
 
-The cross product of $\vec{a}$ to $\vec{b}$ returns a new vector $\vec{c}$ that is perpendicular to both vectors $\vec{a}$ and $\vec{b}$.
+Due to this non-commutativeness, it's actually very strictly related to \textbf{chirality} / \textbf{handedness} of the given 3D / 7D space!
+
+The following image uses a \textbf{Right-hand Coordinate System}:
+\begin{center}
+    \includegraphics[width=10em, height=10em]{vector_cross_product_righthanded}
+\end{center}
+
+\vspace{2.5em}
 
 If we define an angle $\theta$ between vectors $\vec{a}$ and $\vec{b}$, we can then find the magnitude of the cross product to be:
 \begin{center}
     \[
-        {\|\vec{a}} \times {\vec{b}\|}=\|\vec{a}\|\|\vec{b}\| \lvert sin~\theta \rvert \footnote{
-            Notice that $sin~\theta$ is actually wrapped in absolute value, since the magnitude of a vector
-            must always be non negative.
-        }
+        {\|\vec{a}} \times {\vec{b}\|}=\|\vec{a}\|\|\vec{b}\| \lvert sin~\theta \rvert 
     \]
 \end{center}
 
-Which is equivalent to the area of the parallelogram formed by letting $\vec{a}$ and $\vec{b}$ be the two sides.
+Notice that $sin~\theta$ is actually wrapped in absolute value, since the magnitude of a vector
+must always be non negative.
+
+The magnitude of the cross product is also equivalent to the area of the parallelogram formed by letting $\vec{a}$ and $\vec{b}$ be the two sides.
 
 
 
@@ -529,7 +548,7 @@ some pure rotational matrix around the origin. Which can be written mathematical
 
 In which you can now apply the final matrix $\textbf{M}$ on any point $A$ which effectively rotates it around $O$!
 
-\vspace{1em}
+\vspace{2.5em}
 You can create a matrix to convert from one Eucledian space $A$ to Eucledian space $B$ by filling a matrix with
 basis vectors per column of space $A$ relative to $B$, in mathematical terms:
 
@@ -578,7 +597,7 @@ where:
 The plane is defined here as all the points that resides at an equal level of length
 given a unit vector pointing in the direction in which it's facing.
 
-\vspace{1em}
+\vspace{2.5em}
 
 \textbf{Point-Normal form}:
 \begin{center}
@@ -611,12 +630,12 @@ If $t \geq 0$ then the intersection is either at the beginning of the ray($t=0$)
 in front of the ray.
 If $t < 0$ then the intersection is behind the ray's direction.
 
-\vspace{1em}
+\vspace{2.5em}
 
 If $\hat{n} \cdot \hat{D} = 0$ then we know that the ray is actually perpendicular with
 the plane's surface direction. It either misses entirely, or hits infinite points.
 
-\vspace{1em}
+\vspace{2.5em}
 
 After figuring out a valid value for $t$, obtaining the point of intersection should be as simple as
 plugging(substituting) the value $t$ in the original Ray formula:
@@ -771,7 +790,7 @@ three-dimensional spaces.
     $\frac{Q}{k} = \frac{\begin{bmatrix}w & \vec{V}\end{bmatrix}}{k} =\begin{bmatrix}\frac{w}{k} & \frac{1}{k}\vec{V}\end{bmatrix}$
 \end{center}
 
-\vspace{1em}
+\vspace{2.5em}
 \textbf{Conjugate} of a quaternion:
 \begin{center}
     $Q^* = \begin{bmatrix}w & \vec{V}\end{bmatrix}^* =\begin{bmatrix}w & -\vec{V}\end{bmatrix}$
@@ -779,7 +798,7 @@ three-dimensional spaces.
 
 The conjugate of a quaternion simply negates the vector component of a quaternion.
 
-\vspace{1em}
+\vspace{2.5em}
 \textbf{Inverse} of a quaternion:
 \begin{center}
     $Q^{-1} = \frac{Q^*}{\|Q\|^2}$
@@ -840,10 +859,10 @@ In mathematical terms:
     \]
 \end{center}
 
-\vspace{1em}
+\vspace{2.5em}
 
-This formula can actually be applied multiple times consecutively to create a resulting rotational displacement
-that is the "sum" of all od each individual rotation:
+This formula can actually be applied multiple times consecutively to create a new rotational displacement
+that is the "sum" of all of each individual rotation:
 \begin{center}
     \begin{flalign}
         P_q & = b(aPa^{-1})b^{-1} \\
@@ -853,7 +872,7 @@ that is the "sum" of all od each individual rotation:
 \end{center}
 
 The above equation applies the versor $a$ first on $P$, then applies versor $b$ afterwards.
-By rearranging, it is obvious that it is equivalent to simply rotating the combination of two
+By rearranging the equation, it is obvious that it is equivalent to rotating the combination of two
 versors $a$ and $b$.
 
 
@@ -889,7 +908,7 @@ TODO
 
 
 \newpage
-\section{Useful resources and references}
+\section{Useful Resources and References}
 
 \begin{enumerate}
     \item Book: \emph{3D Math Primer for Graphics and Game Development} by Fletcher Dunn and Ian Parberry
