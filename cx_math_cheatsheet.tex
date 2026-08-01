@@ -130,6 +130,30 @@ Explain how intervals can be applied in functions to give a more complicated int
 Explain the limitations of intervals in terms of mathematical expression; Intervals can't explain distribution of values within it.
 It only explains the bounds.
 
+\section{Useful Manipulations}
+\subsection{Linear Mapping}
+Given some value $x \in [a, b]$, we wish to map all values linearly to another range such that $x' \in [i, j]$,
+we can follow this procedure(assuming that $a, b, i, j \in \mathbb{R}$):
+
+\begin{enumerate}
+    \item Shift $x$ from $[a, b]$ to $[0, (b - a)]$ by subtracting by $a$.
+    \item Squeeze the value to range $[0, 1]$ by dividing by $(b - a)$.
+    \item Scale the range $[0, 1]$ to $[0, (j - i)]$ by multiplying by $(j - i)$.
+    \item Finally, offset the range $[0, (j - i)]$ to the desired range $[i, j]$ by adding $i$.
+\end{enumerate}
+
+In mathematical terms:
+\begin{center}
+    $m(x, a, b, i, j) = \frac{(x - a)(j - i)}{(b - a)} + i$
+\end{center}
+
+Very useful for mapping a value from one range to another!
+
+\subsection{Looping a Range}
+If you have a value $x \in \mathbb{R}$, and you wish to do something to it, so it always stay in a range of $[a, b]$,
+then you can follow the following procedure:
+
+TODO
 
 
 \newpage
