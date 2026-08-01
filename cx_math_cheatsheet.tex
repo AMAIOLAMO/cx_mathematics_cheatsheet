@@ -961,11 +961,11 @@ By rearranging the equation, it is obvious that it is equivalent to rotating the
 versors $a$ and $b$.
 
 \sgap
-\textbf{Logarithm and Exponential} of quaternions:
+\subsection{Logarithm and Exponential Functions of Quaternions}
 
-If we let $\alpha = \frac{\theta}{2}$, then we can define the logarithm of a versor $Q$ as:
+If we let $\alpha = \frac{\theta}{2}$, then we can define the logarithm function of a versor $Q$ as:
 \begin{center}
-    $log(Q) = log(\begin{bmatrix}cos~\alpha & sin~\alpha~\hat{n}\end{bmatrix}) = \begin{bmatrix}0 & \alpha\hat{n}\end{bmatrix}$
+    $log(Q) \equiv log(\begin{bmatrix}cos~\alpha & sin~\alpha~\hat{n}\end{bmatrix}) = \begin{bmatrix}0 & \alpha\hat{n}\end{bmatrix}$
 \end{center}
 
 As you can see, the logarithm of a versor is simply storing the half angle of rotation directly in the unit vector!
@@ -980,10 +980,12 @@ It is also important to note the result may not be a versor / unit quaternion!
 
 This method of storing more information in less numbers is commonly referred to as \textbf{exponential map format}.
 
-\sgap
-If a quaternion has the format $Q = \begin{bmatrix}0 & \alpha\hat{n}\end{bmatrix}$ then we can define the exponential of it as:
+\tgap
+If a quaternion has the format $Q = \begin{bmatrix}0 & \alpha\hat{n}\end{bmatrix}$
+then we can define the exponential function of a quaternion as:
+
 \begin{center}
-    $exp(Q) = exp(\begin{bmatrix}0 & \alpha\hat{n}\end{bmatrix}) = \begin{bmatrix}cos~\alpha & sin~\alpha~\hat{n}\end{bmatrix}$
+    $exp(Q) \equiv exp(\begin{bmatrix}0 & \alpha\hat{n}\end{bmatrix}) = \begin{bmatrix}cos~\alpha & sin~\alpha~\hat{n}\end{bmatrix}$
 \end{center}
 
 Hopefully you have noticed by now that the logarithm and exponential functions are actually inverse of each other:
@@ -992,7 +994,27 @@ Hopefully you have noticed by now that the logarithm and exponential functions a
     $exp(log(Q)) = Q$
 \end{center}
 
+\sgap
+\subsection{Exponentiation of Quaternions}
+Confusingly, quaternions also have exponentiation, it is different compared to the \textbf{exponential} function. It is mathematically defined as:
+\begin{center}
+    $Q^t \equiv exp(t~log(Q))$
+\end{center}
 
+When applying exponentiation of $t$ to a versor that rotates $\theta$ angle around an axis, the resulting quaternion rotates
+$\theta t$... With a catch! If $\theta > 180~degrees$ then what happens, is the quaternion kind of "flips to the other direction",
+and rotates in the "shorter angle", here's an image that shows this:
+
+TODO: put image here :)
+
+So if $Q$ rotates 50 degrees, then $Q_2$ rotates 100 degrees, but $Q_4$ does not rotate 200 degrees, but rather $200 - 360 = -160~degrees$
+on the other direction! (because it is shorter)
+
+\subsection{Quaternion Difference}
+TODO: Explain $\delta d = ba^{-1}$
+
+\subsection{Quaternion Interpolation(Spherical Interpolation)}
+TODO: use the above explanation of difference to derive interpolation
 
 
 \newpage
