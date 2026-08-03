@@ -70,6 +70,8 @@ Each new introduction of a \textbf{new concept} will have the following:
     \item Additional resources as \textbf{footnotes} to explain the concept in more detail.
     \item If the mathematical definition has fancy letters and symbols, it will get explained
         in the "\textbf{where}" section right after the definition.
+    \item \textbf{Counter-examples and explaination} of why it doesn't work this way.
+        (It's optional because sometimes counter-examples are harder to explain)
 \end{enumerate}
 
 \tgap
@@ -105,6 +107,8 @@ does not change the result.
     $(x * y) * z = x * (y * z), \forall x,y,z \in S$
 \end{center}
 
+
+
 \section{Commutative Property}
 Statement:
 A binary operation $*$ on set $S$ is commutative iff changing the order of the operands does not change
@@ -122,8 +126,6 @@ result.
 \begin{center}
     $x * y = -(y * x), \forall x,y \in S$
 \end{center}
-
-
 
 
 \newpage
@@ -234,7 +236,7 @@ goes below $20$, the $\max$ function always just picks $20$, otherwise it picks 
     \end{center}
 \end{samepage}
 
-Similar to $Max$ but reversed. It gives the minimum of two values $x, y \in \mathbb{R}$.
+Similar to $\max$ but reversed. It gives the minimum of two values $x, y \in \mathbb{R}$.
 
 We can restrict values to not get above a certain value, for example:
 $\min(x, 100)$, the result will never get above $100$, since if $x$ is greater than $100$, that would mean
@@ -250,6 +252,7 @@ This is often called \textbf{clamping}:
 
 We first restrict $x$ to not get below $a$, then we restrict that result to not get above $b$ :D
 
+
 \subsection{Value Stepping}
 TODO
 
@@ -259,6 +262,61 @@ If you have a value $x \in \mathbb{R}$, and you wish to do something to it, so i
 then you can follow the following procedure:
 
 TODO
+
+
+
+
+
+\newpage
+\chapter{Bounds, Minimum and Maximum}
+
+\section{Finding Tight Intervals}
+Recall the definition of $\min$ and $\max$ functions from the chapter \textbf{Range Manipulation}'s \textbf{Value Clamping} section.
+
+We can generalize the $\min$ and $\max$ function to include more values:
+\begin{center}
+    \[
+        \min(a_1, a_2, a_3, ..., a_n) = \min(a_1, \min(a_2, a_3, ..., a_n)) \\
+        \max(a_1, a_2, a_3, ..., a_n) = \max(a_1, \max(a_2, a_3, ..., a_n))
+    \]
+\end{center}
+
+For example, $\min(1, 4, -4) = \min(1, \min(4, -4))$. Here we can evaluate from the inside to the outside.
+So $\min(4, -4) = -4$ and finally $\min(1, -4) = -4 = \min(1, 4, -4)$. Same should apply to the generalized $\max$ function!
+
+In other words:
+\begin{itemize}
+    \item $\min$: Returns the minimum among all the values $a_i$.
+    \item $\max$: Returns the maximum among all the values $a_i$.
+\end{itemize}
+
+By using this generalized $\min$ and $\max$ functions, we can actually find the bounding range of a set of values,
+for example, if we have a set of values denoted by $a_i$, and there are $n$ of them (i.e. the first element is $a_1$ and last is $a_n$),
+then, the interval that \textbf{tightly} includes all values is defined as:
+\begin{center}
+    $[\min(a_1, a_2, a_3, ..., a_n), \max(a_1, a_2, a_3, ..., a_n)]$
+\end{center}
+
+For example, if we have values $1, 4, 5, -2, 3$, we can find it's tight bound as:
+\begin{center}
+    $[\min(1, 4, 5, -2, 3), \max(1, 4, 5, -2, 3)] = [-2, 5]$
+\end{center}
+
+Here's how it looks like when plotted in the real number line:
+
+TODO: an image here demonstrating the example :3
+
+
+
+\section{Finding Bounds in Higher Dimensions}
+This can be very useful if we extend this to two or more dimensions, for instance, we can find the bounding box in two dimensions
+given a bunch of points by finding the $\min$ and $\max$ of all points:
+
+TODO: axis-aligned bounding boxes etc.
+
+
+
+
 
 
 \newpage
