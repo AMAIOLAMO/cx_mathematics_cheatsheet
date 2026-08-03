@@ -157,6 +157,29 @@ In mathematical terms:
 
 Very useful for mapping a value from one range to another!
 
+This also works for ranges that are reversed(i.e. not following the $[min, max]$ format)! So for instance, let's map
+from $[20, 30]$ to $[1, 0]$:
+\begin{center}
+    \begin{flalign}
+        m(x, 20, 30, 1, 0) & = \frac{(x - 20)(0 - 1)}{(30 - 20)} + 1 \\
+                           & = \frac{20 - x}{10} + 1 \\
+                           & = \frac{20 - x + 10}{10} \\
+                           & = \frac{30 - x}{10}
+    \end{flalign}
+\end{center}
+
+We can check for it's validness by putting this in a graphing calculator like \textbf{Desmos}:
+\begin{center}
+    \includegraphics[width=25em, height=13em]{linear_mapping_reversed_example}
+\end{center}
+
+You can see $20$ points to $1$, and $30$ points to $0$ with a smooth linear line in between!
+
+In fact, linear mapping formula used here is actually solving for a line formula,
+where two points are $(20, 1)$ and $(30, 0)$ :D
+
+
+
 \sgap
 Here are some pre-derived formulas for common range mappings:
 
@@ -172,6 +195,60 @@ From $x \in [a, b]$ to $x' \in [-1, 1]$ (Also called the signed normal range)
     $x' = \frac{2(x - a)}{b - a} - 1$
 \end{center}
 
+\subsection{Value Clamping}
+Sometimes we want to restrict some value $x \in \mathbb{R}$ within some max or a min boundary, we can utilize exactly
+the $\max$ and $\min$ functions for this exact purpose! They are defined as follows:
+
+\sgap
+\begin{samepage}
+    Here is the definition of the $\max$ function:
+    \begin{center}
+        \[
+            \max(x, y) =
+            \begin{cases}
+                x & \text{if } x \geq y \\
+                y & \text{if } x < y
+            \end{cases}
+        \]
+    \end{center}
+\end{samepage}
+
+It gives you the max between two numbers $x, y \in \mathbb{R}$, pretty straight forward!
+
+We can restrict values to not get below a certain value by utilizing this function, for instance
+$\max(x, 20)$ forces the result to be greater of equal to $20$, in other words $\max(x, 20) \geq 20$. If $x$
+goes below $20$, the $\max$ function always just picks $20$, otherwise it picks $x$ since it's greater.
+
+\sgap
+
+\begin{samepage}
+    And this is the definition of $\min$ function:
+    \begin{center}
+        \[
+            \min(x, y) =
+            \begin{cases}
+                x & \text{if } x \leq y \\
+                y & \text{if } x > y
+            \end{cases}
+        \]
+    \end{center}
+\end{samepage}
+
+Similar to $Max$ but reversed. It gives the minimum of two values $x, y \in \mathbb{R}$.
+
+We can restrict values to not get above a certain value, for example:
+$\min(x, 100)$, the result will never get above $100$, since if $x$ is greater than $100$, that would mean
+$\min$ will just pick $100$ since it's smaller. Otherwise it'll pick $x$.
+
+
+\sgap
+Finally, we can utilize both to restrict a value $x \in \mathbb{R}$ within a certain range $[a, b]$ by using both one after the other.
+This is often called \textbf{clamping}:
+\begin{center}
+    $clamp(x, a, b) = \min(\max(x, a), b)$
+\end{center}
+
+We first restrict $x$ to not get below $a$, then we restrict that result to not get above $b$ :D
 
 \subsection{Value Stepping}
 TODO
@@ -680,7 +757,9 @@ given a unit vector pointing in the direction in which it's facing.
 \sgap
 
 \textbf{Point-Normal form}:
-TODO: image here :3
+\begin{center}
+    \includegraphics[width=13em, height=13em]{primitive_geometry_point_normal_plane}
+\end{center}
 
 \begin{center}
     $(P' - P) \cdot \hat{n} = 0$
