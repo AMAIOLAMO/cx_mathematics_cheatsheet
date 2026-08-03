@@ -679,6 +679,9 @@ then a valid kind of multiplication for vectors :D
     }
 \end{samepage}
 
+\subsection{Dot Product and Projections in $\mathbb{R}^n$}
+TODO: explain how dot product does essentially projections of one vector $A$ ontop of the other vector $B$.
+
 
 
 \subsection{$\mathbb{R}^n$ Vectors and Points in Eucledian Space}
@@ -918,6 +921,31 @@ Solving for $t$ we get:
 \end{center}
 
 The rest should be exactly the same as Distance-Normal form Ray-Plane intersection :3
+
+
+\subsection{Mirroring a Point with regards to the Plane}
+If you think about mirrors, they "imitate" everything from one side, just "mirrored" / "flipped" using the mirror itself
+as a center for flipping. We can think of a plane as a mirror in 3D space, we can mirror any point from one side to the other side
+of the "mirror"(plane) using some formula :O
+
+\sgap
+The formula for mirroring a point in \textbf{Point-Normal form} for the plane should be as follows:
+\begin{center}
+    $P' = P - 2 \hat{n} [(P - O) \cdot \hat{n}]$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $P$: is the initial point to mirror.
+    \item $P'$: is the final point that got mirrored.
+    \item $\hat{n}$: is the normal / direction that the plane is facing.
+    \item $O$: is any known point on the plane.
+\end{itemize}
+
+This is how it looks like visually:
+
+TODO: put an image here showing the plane, the point $P$ and the reflected point $P'$, and also the projected vector
+$\hat{n}[(P - O) \cdot \hat{n}]$
 
 
 
