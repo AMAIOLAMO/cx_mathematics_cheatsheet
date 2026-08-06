@@ -1,0 +1,54 @@
+\chapter{Bounds, Minimum and Maximum}
+
+\section{Finding Tight Intervals}
+Recall the definition of $\min$ and $\max$ functions from the chapter \textbf{Range Manipulation}'s \textbf{Value Clamping} section.
+
+We can generalize the $\min$ and $\max$ function to include more values :3
+
+For $\min$:
+\begin{center}
+        $\min(a_1, a_2, a_3, ..., a_n) = \min(a_1, \min(a_2, a_3, ..., a_n))$
+\end{center}
+
+And for $\max$:
+\begin{center}
+        $\max(a_1, a_2, a_3, ..., a_n) = \max(a_1, \max(a_2, a_3, ..., a_n))$
+\end{center}
+
+For example, $\min(1, 4, -4) = \min(1, \min(4, -4))$. Here we can evaluate from the inside to the outside.
+So $\min(4, -4) = -4$ and finally $\min(1, -4) = -4 = \min(1, 4, -4)$. Same should apply to the generalized $\max$ function!
+
+In other words:
+\begin{itemize}
+    \item $\min$: Returns the minimum among all the values $a_i$.
+    \item $\max$: Returns the maximum among all the values $a_i$.
+\end{itemize}
+
+By using this generalized $\min$ and $\max$ functions, we can actually find the bounding range of a set of values,
+for example, if we have a set of values denoted by $a_i$, and there are $n$ of them (i.e. the first element is $a_1$ and last is $a_n$),
+then, the interval that \textbf{tightly} includes all values is defined as:
+\begin{center}
+    $[\min(a_1, a_2, a_3, ..., a_n), \max(a_1, a_2, a_3, ..., a_n)]$
+\end{center}
+
+For example, if we have values $1, 4, 5, -2, 3$, we can find it's tight bound as:
+\begin{center}
+    $[\min(1, 4, 5, -2, 3), \max(1, 4, 5, -2, 3)] = [-2, 5]$
+\end{center}
+
+Here's how it looks like when plotted in the real number line:
+
+TODO: an image here demonstrating the example :3
+
+
+
+\section{Finding Bounds in Higher Dimensions}
+This can be very useful if we extend this to two or more dimensions, for instance, we can find the bounding box in two dimensions
+given a bunch of points by finding the $\min$ and $\max$ of all points:
+
+TODO: axis-aligned bounding boxes etc.
+
+
+
+
+

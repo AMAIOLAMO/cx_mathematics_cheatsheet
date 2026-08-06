@@ -1,0 +1,231 @@
+\chapter{Quaternions}
+Quaternions are four dimensional complex numbers that is defined as the following:
+
+\begin{center}
+    $Q = w + a\mathbf{i} + b\mathbf{j} + c\mathbf{k}=\begin{bmatrix}w & \begin{pmatrix}a & b & c\end{pmatrix}\end{bmatrix}=\begin{bmatrix}w & \vec{V}\end{bmatrix}$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $w, a, b, c$: are the real numbers $\mathbb{R}$ that denotes the weight of each axis in the complex number.
+    \item $\mathbf{i}, \mathbf{j}, \mathbf{k}$: are the axes representing the 2nd up to 4th dimensions. ($w$ is it's own dimension as well! In the real dimension :3)
+    \item satisfies $\mathbf{i}^2=\mathbf{j}^2=\mathbf{k}^2=\mathbf{ijk}=-1$
+    \item $\vec{V}$: is referred to as the \textbf{vector component} of a quaternion.
+    \item $w$: is referred to as the \textbf{scalar component} of a quaternion.
+\end{itemize}
+
+
+
+\subsection{Quaternion Properties}
+
+\textbf{Magnitude} of a quaternion:
+\begin{center}
+    $\|Q\| = \|\begin{bmatrix}w & \vec{V}\end{bmatrix}\| = \sqrt{w^2 + \|\vec{V}\|^2}$
+\end{center}
+
+If we define $\vec{V} = \begin{bmatrix}a & b & c\end{bmatrix}$ then:
+\begin{center}
+    $\|Q\| = \sqrt{w^2 + a^2 + b^2 + c^2}$
+\end{center}
+
+Which is similar to a four dimensional vector's eucledian / pythagorean distance.
+
+If the magnitude of a quaternion is $1$, then we call it a \textbf{unit quaternion}(similar to a unit vector).
+
+A unit quaternion is special, as it represents "pure rotation", or "rotational displacement" for
+three-dimensional spaces.
+
+\sgap
+\textbf{Identity} quaternion:
+\begin{center}
+    $I = \begin{bmatrix}1 & \vec{0}\end{bmatrix}$
+\end{center}
+
+The identity quaternion is special because it means "\textbf{no rotational displacement}", it
+is particularly important with quaternion inverses and multiplication (see \textbf{Quaternion Operations} section for more detail).
+
+
+\subsection{Quaternion Operations}
+\textbf{Scalar Multiplication} of a quaternion:
+\begin{center}
+    $kQ = k \begin{bmatrix}w & \vec{V}\end{bmatrix} =\begin{bmatrix}kw & k\vec{V}\end{bmatrix}$
+\end{center}
+
+
+\textbf{Scalar Division} of a quaternion:
+\begin{center}
+    $\frac{Q}{k} = \frac{\begin{bmatrix}w & \vec{V}\end{bmatrix}}{k} =\begin{bmatrix}\frac{w}{k} & \frac{1}{k}\vec{V}\end{bmatrix}$
+\end{center}
+
+\sgap
+\textbf{Multiplication} between two quaternions:
+\begin{center}
+    \begin{flalign}
+        Q_1Q_2 & = \begin{bmatrix}w_1 & \vec{V_1}\end{bmatrix}\begin{bmatrix}w_2 & \vec{V_2}\end{bmatrix} \\
+            & = \begin{bmatrix}w_1w_2 - \vec{V_1} \cdot \vec{V_2} & w_1\vec{V_2} + w_2\vec{V_1} + \vec{V_1} \times \vec{V_2}\end{bmatrix}
+    \end{flalign}
+\end{center}
+
+That's quite long isn't it? Notice that the vector part has $\vec{V_1} \times \vec{V_2}$, this means
+quaternions actually are non-commutative(because vector cross products are non-commutative)! So in mathematical terms:
+
+\begin{center}
+    $Q_1Q_2 \neq Q_2Q_1$
+\end{center}
+
+But do not worry! Quaternion multiplication is actually associative:
+\begin{center}
+    $(Q_1Q_2)Q_3 = Q_1(Q_2Q_3)$
+\end{center}
+
+Just be careful when rearranging or calculating quaternion equations :D
+
+
+\sgap
+\textbf{Conjugate} of a quaternion:
+\begin{center}
+    $Q^* = \begin{bmatrix}w & \vec{V}\end{bmatrix}^* =\begin{bmatrix}w & -\vec{V}\end{bmatrix}$
+\end{center}
+
+The conjugate of a quaternion simply negates the vector component of a quaternion.
+
+\sgap
+\textbf{Inverse} of a quaternion:
+\begin{center}
+    $Q^{-1} = \frac{Q^*}{\|Q\|^2}$
+\end{center}
+
+The inverse of a quaternion applies the "inverse" rotation of a regular quaternion,
+if a quaternion $Q$ is inversely applied to itself, then we would get the \textbf{identity} quaternion:
+\begin{center}
+    $QQ^{-1} = Q^{-1}Q = I = \begin{bmatrix}1 & \vec{0}\end{bmatrix}$
+\end{center}
+
+For a unit quaternion, due to the fact that it's magnitude being 1, it's inverse
+is simply the conjugate of the quaternion!
+
+\sgap
+\textbf{Dot Product} of a quaternion:
+\begin{center}
+    $Q_1 \cdot Q_2 = \begin{bmatrix}w_1 & \vec{V_1}\end{bmatrix} \cdot \begin{bmatrix}w_2 & \vec{V_2}\end{bmatrix} = w_1w_2 + \vec{V_1} \cdot \vec{V_2}$
+\end{center}
+
+The quaternion dot product, similar to a vector dot product, also does element-wise multiplication, and returns a scalar
+and not a quaternion.
+
+
+\subsection{Quaternions as Rotations for 3D spaces(Versors)}
+When we use unit quaternions for the purpose of rotating vectors, points or objects in three-dimensional spaces
+, this unit quaternion is also called a "\textbf{versor}".
+
+A versor can be defined using \textbf{Angle-Axis Form}:
+\begin{center}
+    $q = \begin{bmatrix}w & \vec{V}\end{bmatrix}=\begin{bmatrix}cos~\frac{\theta}{2} & sin~\frac{\theta}{2}~\hat{n}\end{bmatrix}$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $q$: is the versor itself(or the unit quaternion).
+    \item $\hat{n}$: the axis of rotation denoted as a unit vector.
+    \item $\theta$: the angle of rotation around the axis denoted by $\hat{n}$.
+\end{itemize}
+
+The versor represents a pure \textbf{rotational displacement}, which can be visualized like this:
+\begin{center}
+    \includegraphics[width=13em, height=13em]{axis_angle_rotation}
+\end{center}
+
+
+You can quickly observe that:
+\begin{center}
+    $w = cos~\frac{\theta}{2},~ \vec{V} = sin~\frac{\theta}{2} \hat{n}$
+\end{center}
+
+You can apply a rotation to a 3D point $P=\begin{pmatrix}x & y & z\end{pmatrix}$ by first promoting this
+point into a quaternion with the real component($w$) set to zero:
+\begin{center}
+    $P_q = \begin{bmatrix}0 & \begin{pmatrix}x & y & z\end{pmatrix}\end{bmatrix}$
+\end{center}
+
+Then apply this new promoted point quaternion in this "weird-looking" formula given a versor $Q$:
+\begin{center}
+    $P_q' = QP_qQ^{-1} = \begin{bmatrix}w' & \begin{pmatrix}x' & y' & z'\end{pmatrix}\end{bmatrix}$
+\end{center}
+
+The result new quaternion $P_q'$ should have the result rotated point $P'$ in it's vector component of $P_q'$.
+In mathematical terms:
+\begin{center}
+    $P' = \begin{pmatrix}x' & y' & z'\end{pmatrix}$
+\end{center}
+
+\sgap
+
+This formula can actually be applied multiple times consecutively to create a new rotational displacement
+that is the "sum" of all of each individual rotation:
+\begin{center}
+    \begin{flalign}
+        P_q & = b(aPa^{-1})b^{-1} \\
+            & = (ba)P(a^{-1}b^{-1}) \\
+            & = (ba)P(ba)^{-1}
+    \end{flalign}
+\end{center}
+
+The above equation applies the versor $a$ first on $P$, then applies versor $b$ afterwards.
+By rearranging the equation, it is obvious that it is equivalent to rotating the combination of two
+versors $a$ and $b$.
+
+\sgap
+\subsection{Logarithm and Exponential Functions of Quaternions}
+
+If we let $\alpha = \frac{\theta}{2}$, then we can define the logarithm function of a versor $Q$ as:
+\begin{center}
+    $log(Q) \equiv log(\begin{bmatrix}cos~\alpha & sin~\alpha~\hat{n}\end{bmatrix}) = \begin{bmatrix}0 & \alpha\hat{n}\end{bmatrix}$
+\end{center}
+
+As you can see, the logarithm of a versor is simply storing the half angle of rotation directly in the unit vector!
+And because we know unit vectors always have a length of 1, we can obtain back the half angle $\alpha$
+by simply getting the magnitude of the vector part of the quaternion(note that the magnitude
+of a vector is always positive, therefore we will always lose the sign of the angle!)
+
+But do not worry, the sign is preserved on the unit vector instead! You can see it as rotating on the opposite direction
+with the reverse angle(i.e. $-\alpha$ with $-\hat{n}$).
+
+It is also important to note the result may not be a versor / unit quaternion!
+
+This method of storing more information in less numbers is commonly referred to as \textbf{exponential map format}.
+
+\tgap
+If a quaternion has the format $Q = \begin{bmatrix}0 & \alpha\hat{n}\end{bmatrix}$
+then we can define the exponential function of a quaternion as:
+
+\begin{center}
+    $exp(Q) \equiv exp(\begin{bmatrix}0 & \alpha\hat{n}\end{bmatrix}) = \begin{bmatrix}cos~\alpha & sin~\alpha~\hat{n}\end{bmatrix}$
+\end{center}
+
+Hopefully you have noticed by now that the logarithm and exponential functions are actually inverse of each other:
+
+\begin{center}
+    $exp(log(Q)) = Q$
+\end{center}
+
+\sgap
+\subsection{Exponentiation of Quaternions}
+Confusingly, quaternions also have exponentiation, it is different compared to the \textbf{exponential} function. It is mathematically defined as:
+\begin{center}
+    $Q^t \equiv exp(t~log(Q))$
+\end{center}
+
+When applying exponentiation of $t$ to a versor that rotates $\theta$ angle around an axis, the resulting quaternion rotates
+$\theta t$... With a catch! If $\theta > 180~degrees$ then what happens, is the quaternion kind of "flips to the other direction",
+and rotates in the "shorter angle", here's an image that shows this:
+
+TODO: put image here :)
+
+So if $Q$ rotates 50 degrees, then $Q^2$ rotates 100 degrees, but $Q^4$ does not rotate 200 degrees, but rather $200 - 360 = -160~degrees$
+on the other direction! (because it is shorter)
+
+\subsection{Quaternion Difference}
+TODO: Explain $\delta d = ba^{-1}$
+
+\subsection{Quaternion Interpolation(Spherical Interpolation)}
+TODO: use the above explanation of difference to derive interpolation

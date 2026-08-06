@@ -1,0 +1,138 @@
+\chapter{Range Manipulation}
+
+\section{Intervals}
+TODO: explain mathematical definitions of intervals [a, b], (a, b) and in between
+explain how to do operations on them, and what they meant intuitively...
+
+Explain how intervals can be applied in functions to give a more complicated inter al
+
+Explain the limitations of intervals in terms of mathematical expression; Intervals can't explain distribution of values within it.
+It only explains the bounds.
+
+\section{Useful Manipulations}
+\subsection{Linear Mapping}
+Given some value $x \in [a, b]$, we wish to map all values linearly to another range such that $x' \in [i, j]$,
+we can follow this procedure(assuming that $a, b, i, j \in \mathbb{R}$):
+
+\begin{enumerate}
+    \item Shift $x$ from $[a, b]$ to $[0, (b - a)]$ by subtracting by $a$.
+    \item Squeeze the value to range $[0, 1]$ by dividing by $(b - a)$.
+    \item Scale the range $[0, 1]$ to $[0, (j - i)]$ by multiplying by $(j - i)$.
+    \item Finally, offset the range $[0, (j - i)]$ to the desired range $[i, j]$ by adding $i$.
+\end{enumerate}
+
+In mathematical terms:
+\begin{center}
+    $m(x, a, b, i, j) = \frac{(x - a)(j - i)}{(b - a)} + i$
+\end{center}
+
+Very useful for mapping a value from one range to another!
+
+This also works for ranges that are reversed(i.e. not following the $[min, max]$ format)! So for instance, let's map
+from $[20, 30]$ to $[1, 0]$:
+\begin{center}
+    \begin{flalign}
+        m(x, 20, 30, 1, 0) & = \frac{(x - 20)(0 - 1)}{(30 - 20)} + 1 \\
+                           & = \frac{20 - x}{10} + 1 \\
+                           & = \frac{20 - x + 10}{10} \\
+                           & = \frac{30 - x}{10}
+    \end{flalign}
+\end{center}
+
+We can check for it's validness by putting this in a graphing calculator like \textbf{Desmos}:
+\begin{center}
+    \includegraphics[width=25em, height=13em]{linear_mapping_reversed_example}
+\end{center}
+
+You can see $20$ points to $1$, and $30$ points to $0$ with a smooth linear line in between!
+
+In fact, linear mapping formula used here is actually solving for a line formula,
+where two points are $(20, 1)$ and $(30, 0)$ :D
+
+
+
+\sgap
+Here are some pre-derived formulas for common range mappings:
+
+\tgap
+From $x \in [a, b]$ to $x' \in [0, 1]$ (Also called the normal range)
+\begin{center}
+    $x' = \frac{x - a}{b - a}$
+\end{center}
+
+\sgap
+From $x \in [a, b]$ to $x' \in [-1, 1]$ (Also called the signed normal range)
+\begin{center}
+    $x' = \frac{2(x - a)}{b - a} - 1$
+\end{center}
+
+\subsection{Value Clamping}
+Sometimes we want to restrict some value $x \in \mathbb{R}$ within some max or a min boundary, we can utilize exactly
+the $\max$ and $\min$ functions for this exact purpose! They are defined as follows:
+
+\sgap
+\begin{samepage}
+    Here is the definition of the $\max$ function:
+    \begin{center}
+        \[
+            \max(x, y) =
+            \begin{cases}
+                x & \text{if } x \geq y \\
+                y & \text{if } x < y
+            \end{cases}
+        \]
+    \end{center}
+\end{samepage}
+
+It gives you the max between two numbers $x, y \in \mathbb{R}$, pretty straight forward!
+
+We can restrict values to not get below a certain value by utilizing this function, for instance
+$\max(x, 20)$ forces the result to be greater of equal to $20$, in other words $\max(x, 20) \geq 20$. If $x$
+goes below $20$, the $\max$ function always just picks $20$, otherwise it picks $x$ since it's greater.
+
+\sgap
+
+\begin{samepage}
+    And this is the definition of $\min$ function:
+    \begin{center}
+        \[
+            \min(x, y) =
+            \begin{cases}
+                x & \text{if } x \leq y \\
+                y & \text{if } x > y
+            \end{cases}
+        \]
+    \end{center}
+\end{samepage}
+
+Similar to $\max$ but reversed. It gives the minimum of two values $x, y \in \mathbb{R}$.
+
+We can restrict values to not get above a certain value, for example:
+$\min(x, 100)$, the result will never get above $100$, since if $x$ is greater than $100$, that would mean
+$\min$ will just pick $100$ since it's smaller. Otherwise it'll pick $x$.
+
+
+\sgap
+Finally, we can utilize both to restrict a value $x \in \mathbb{R}$ within a certain range $[a, b]$ by using both one after the other.
+This is often called \textbf{clamping}:
+\begin{center}
+    $clamp(x, a, b) = \min(\max(x, a), b)$
+\end{center}
+
+We first restrict $x$ to not get below $a$, then we restrict that result to not get above $b$ :D
+
+
+\subsection{Value Stepping}
+TODO
+
+
+\subsection{Looping a Range}
+If you have a value $x \in \mathbb{R}$, and you wish to do something to it, so it always stay in a range of $[a, b]$,
+then you can follow the following procedure:
+
+TODO
+
+
+
+
+
