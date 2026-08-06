@@ -1,0 +1,39 @@
+\section{Finite Rotations}
+
+\subsection{Euler's Rotation Theorem}
+This theorem states that given two orientations in 3D space $R_1$ and $R_2$,
+then there exist an axis $\hat{A}$ and an angle $\theta$ such that it runs through a fixed point
+and when applying the rotation around the axis $\hat{A}$ of $\theta$ amount to the orientation $R_1$ gives $R_2$.
+
+In laymans' terms, you can always find a pair of axis-angle to get from one orientation to another with just 1 rotation.
+
+\subsection{Euler-Rodrigues' Finite Rotation Formula}
+Euler-Rodrigues' Finite Rotation Formula states that given a vector $\vec{v}$, we can
+obtain the rotated vector $\vec{v'}$ by rotating it around an axis which is denoted by
+a unit vector $\hat{k}$ of an angle of $\theta$.
+
+\begin{center}
+    $\vec{v'}=\vec{v}~cos~\theta + (\hat{k} \times \vec{v})~sin~\theta + \hat{k}(\hat{k} \cdot \vec{v})(1 - cos~\theta)$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $\vec{v}$: is the vector to rotate.
+    \item $\vec{v'}$: is the resulting rotated vector along the axis.
+    \item $\hat{k}$: is the unit vector denoting the axis of rotation.
+    \item $\theta$: is the angle of rotation to apply to the vector around the axis $\hat{k}$.
+\end{itemize}
+
+It is also useful to define $\hat{k}$ with respect to two non-zero vectors $\vec{a}$ and $\vec{b}$ ($\vec{a} \neq \vec{b}$) which
+can denote a plane of rotation:
+
+\begin{center}
+    $\hat{k} = \frac{\vec{a} \times \vec{b}}{\|\vec{a} \times \vec{b}\|}$
+\end{center}
+
+\vspace{.5em}
+
+\emph{
+    NOTE: The formula shown above is more computationally efficient compared to
+    other means of rotation.
+}

@@ -1,0 +1,55 @@
+\section{Matrix}
+TODO
+
+\subsection{Matrix Properties}
+TODO
+
+\subsection{Matrix Operations}
+TODO
+
+\subsection{Matrix as a Combination of Vectors}
+TODO
+
+\subsection{Matrix as a Representation of Systems of Linear Equations}
+TODO
+
+\subsection{Matrix as a Means of Linear Transformation}
+TODO: explain Rotation, Scale, Shearing...
+
+\subsection{Why is Translation not a form of Linear Transformation}
+TODO: explain why translation is actually Shearing from a higher dimension projected down
+to a dimension lower as translation...
+
+\subsection{Matrix for Transforming Between Two Eucledian Spaces}
+TODO
+
+\subsection{Projection Matricies}
+TODO
+
+\subsection{Useful Matrix Constructs}
+You can rotate an arbitrary point $A$ around another point $O$ by following these steps:
+\begin{enumerate}
+    \item Translate $O$ back to the origin, and bring $A$ with it.
+    \item Rotate this new $A$ around the origin(which is also where the new $O$ resides)
+        as how you would normally.
+    \item Translate the new $O$ back to where $O$ originally was, and bring the new rotated $A$ with it.
+    \item You now have your rotated $A$ around $O$!
+\end{enumerate}
+
+This can be further written in matrix if we promote $O$ and $A$ to homogeneous coordinates(to allow for translation),
+in which the matrix $\textbf{T}$ represents translating $O$ back to origin, and matrix $\textbf{R}$ represents
+some pure rotational matrix around the origin. Which can be written mathematically as:
+\begin{center}
+    $\textbf{M}=\textbf{T}^{-1}\textbf{R}\textbf{T}$
+\end{center}
+
+In which you can now apply the final matrix $\textbf{M}$ on any point $A$ which effectively rotates it around $O$!
+
+\sgap
+You can create a matrix to convert from one Eucledian space $A$ to Eucledian space $B$ by filling a matrix with
+basis vectors per column of space $A$ relative to $B$, in mathematical terms:
+
+TODO
+
+
+

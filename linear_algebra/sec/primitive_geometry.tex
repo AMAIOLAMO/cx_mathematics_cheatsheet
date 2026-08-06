@@ -1,0 +1,227 @@
+\section{Primitive Geometry}
+\subsection{Point}
+In all of geometry, a point is the most basic geometrical primitive, it denotes a location relative to some space, it has no size
+nor does it have any direction.
+
+A point can be defined in eucledian space using the "\textbf{cartesian}" way of representing, which is commonly known as
+\textbf{cartesian coordiantes}:
+\begin{center}
+    $P = \begin{pmatrix}a_1 & a_2 & a_3 & ... & a_n\end{pmatrix}$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $P$: is the point itself :)
+    \item $a_i$: is the magnitude of each basis vectors of this eucledian space.
+    \item $n$: denotes the point residing in an $n$-th dimension eucledian space.
+\end{itemize}
+
+For example, in 3D cartesian coordinates, the point $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$ 
+(assuming we use $\hat{x}$, $\hat{y}$ and $\hat{z}$ as the basis vectors) would represent this:
+\begin{enumerate}
+    \item Begin in the origin of the 3D eucledian space: $\begin{pmatrix}0 & 0 & 0\end{pmatrix}$.
+    \item Move $1$ unit in the $\hat{x}$ direction.
+    \item Move $2$ units in the $\hat{y}$ direction.
+    \item Move $3$ units in the $\hat{z}$ direction.
+\end{enumerate}
+
+
+\subsection{Line}
+TODO
+
+\subsection{Ray}
+\begin{center}
+    \includegraphics[width=13em, height=13em]{primitive_geometry_ray}
+\end{center}
+
+A \emph{ray} is defined as a directed segment that has a
+\emph{origin}(a.k.a. having a position), and a \emph{direction}. It is mathematically defined as follows:
+
+\begin{center}
+    $P=O+\hat{D}t$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $P$: is any point along the ray.
+    \item $O$: is the origin of the ray, where it starts.
+    \item $\hat{D}$: is the unit vector representing the direction of the ray.
+    \item $t$: represents the percent / factor that "moves" the point along the ray.
+\end{itemize}
+
+If $t > 0$ then $P$ would be along the ray's direction $\hat{D}$.
+If $t < 0$ then $P$ would be along the negative ray's direction $-\hat{D}$.
+If $t = 0$ then $P$ would be exactly at the origin point $O$.
+
+\subsection{Plane}
+A plane can be defined in numerous ways.
+
+\textbf{Distance-Normal form}:
+\begin{center}
+    \includegraphics[width=13em, height=13em]{primitive_geometry_distance_normal_plane}
+\end{center}
+
+\begin{center}
+    $P \cdot \hat{n} - d = 0$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $P$: is any point on the plane.
+    \item $\hat{n}$: is the unit vector that represents the direction / facing of the plane.
+    \item $d$: is the offset / distance of the plane from the origin along the direction $\hat{n}$ where it is facing.
+\end{itemize}
+
+The plane is defined here as all the points that resides at an equal level of length
+given a unit vector pointing in the direction in which it's facing.
+
+\sgap
+
+\textbf{Point-Normal form}:
+\begin{center}
+    \includegraphics[width=13em, height=13em]{primitive_geometry_point_normal_plane}
+\end{center}
+
+\begin{center}
+    $(P' - P) \cdot \hat{n} = 0$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $P'$: is any point on the plane.
+    \item $\hat{n}$: is the unit vector that represents the direction / facing of the plane.
+    \item $P$: is an already known point on the plane.
+\end{itemize}
+
+Recall that dot product of two vectors gets the "parallelness" of two vectors,
+if two vectors are perpendicular, their dot product should be 0, which makes sense for any point of a plane
+if we draw a vector from point $P$ to point $P'$, the vector should lie on the plane.
+
+
+
+\subsubsection{Ray-Plane Intersection for Distance-Normal Form}
+We can replace the $P$ in plane's Distance-Norm formula with the Ray's formula with respect to points along the ray.
+
+TODO: image here :3
+
+\begin{center}
+    $(O + \hat{D}t) \cdot \hat{n} - d = 0$
+\end{center}
+
+Since, $O,\hat{D}$ and $\hat{n}$ are known when calculating the intersection,
+we solve for $t$:
+
+\begin{center}
+    $t = \frac{d - \hat{n} \cdot O}{\hat{n} \cdot \hat{D}}$
+\end{center}
+
+If $t \geq 0$ then the intersection is either at the beginning of the ray($t=0$) or
+in front of the ray.
+If $t < 0$ then the intersection is behind the ray's direction.
+
+\sgap
+
+If $\hat{n} \cdot \hat{D} = 0$ then we know that the ray is actually perpendicular with
+the plane's surface direction. It either misses entirely, or hits infinite points.
+
+\sgap
+
+After figuring out a valid value for $t$, obtaining the point of intersection should be as simple as
+plugging(substituting) the value $t$ in the original Ray formula:
+
+\begin{center}
+    $P_{intersect}=O+\hat{D}t_{found}$
+\end{center}
+
+$P_{intersect}$ should be the exact point of intersection on the plane!
+
+\subsubsection{Converting between Point-Normal form and Distance-Normal form}
+TODO: $d=O \cdot \hat{n}$ and $O = d \hat{n}$
+
+\subsubsection{Ray-Plane Intersection for Point-Normal Form}
+Much like the Distance-Normal form, we can also replace the $P$ in plane's Point-Norm formula with the Ray's formula with respect to points along the ray.
+
+TODO: image here :3
+
+\begin{center}
+    $(O + \hat{D}t - P) \cdot \hat{n} = 0$
+\end{center}
+
+Solving for $t$ we get:
+\begin{center}
+    $t = \frac{(P - O) \cdot \hat{n}}{\hat{D} \cdot \hat{n}}$
+\end{center}
+
+The rest should be exactly the same as Distance-Normal form Ray-Plane intersection :3
+
+
+\subsubsection{Mirroring a Point with regards to the Plane}
+If you think about mirrors, they "imitate" everything from one side, just "mirrored" / "flipped" using the mirror itself
+as a center for flipping. We can think of a plane as a mirror in 3D space, we can mirror any point from one side to the other side
+of the "mirror"(plane) using some formula :O
+
+\sgap
+The formula for mirroring a point in \textbf{Point-Normal form} for the plane should be as follows:
+\begin{center}
+    $P' = P - 2 \hat{n} [(P - O) \cdot \hat{n}]$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $P$: is the initial point to mirror.
+    \item $P'$: is the final point that got mirrored.
+    \item $\hat{n}$: is the normal / direction that the plane is facing.
+    \item $O$: is any known point on the plane.
+\end{itemize}
+
+This is how it looks like visually:
+
+TODO: put an image here showing the plane, the point $P$ and the reflected point $P'$, and also the projected vector
+$\hat{n}[(P - O) \cdot \hat{n}]$
+
+
+
+
+
+\subsubsection{Plane from two different, non-zero vectors}
+You can also define a plane's facing direction with two different, non-zero vectors, in mathematical terms:
+
+TODO: image here :3
+
+\begin{center}
+    $\hat{n} = \frac{\vec{a} \times \vec{b}}{\|\vec{a} \times \vec{b}\|}$
+\end{center}
+
+where $\vec{a} \neq \vec{b}, \|\vec{a}\| \neq 0, \|\vec{b}\| \neq 0$
+
+
+
+
+\subsection{Sphere}
+A sphere is defined as all the points $P$ at an equal distance $r$
+from the center point $C$:
+
+\begin{center}
+    $\|P-C\|-r=0$
+\end{center}
+
+where:
+\begin{itemize}
+    \item $P$: is any point on the surface of the sphere.
+    \item $C$: is the center of the sphere.
+    \item $r$: is the radius of the circle, from the center $C$ to any point on the
+        surface of the sphere $P$.
+\end{itemize}
+
+\subsubsection{Ray-Sphere Intersection}
+TODO
+
+\subsection{Axis-Aligned Bounding Box}
+TODO
+
+\subsection{Triangle}
+TODO
+
+\subsection{Barycentric Coordinates}
+TODO
+
