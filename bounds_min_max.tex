@@ -36,17 +36,64 @@ For example, if we have values $1, 4, 5, -2, 3$, we can find it's tight bound as
     $[\min(1, 4, 5, -2, 3), \max(1, 4, 5, -2, 3)] = [-2, 5]$
 \end{center}
 
-Here's how it looks like when plotted in the real number line:
-
-TODO: an image here demonstrating the example :3
+\begin{samepage}
+    Here's how it looks like when plotted in the real number line:
+    \begin{center}
+        \includegraphics[width=13em, height=13em]{tight_interval_1D_example}
+    \end{center}
+\end{samepage}
 
 
 
 \section{Finding Bounds in Higher Dimensions}
-This can be very useful if we extend this to two or more dimensions, for instance, we can find the bounding box in two dimensions
-given a bunch of points by finding the $\min$ and $\max$ of all points:
+This can be very useful if we extend this to two or more dimensions,
+for instance, we can find the bounding box in two dimensions if we have a list of 2D points $P_i = \begin{pmatrix}x_i & y_i\end{pmatrix}$
+and you have $n$ points represented in cartesian coordinates, then:
 
-TODO: axis-aligned bounding boxes etc.
+First we find the $\min$ bound of all 2D points by simply finding the minimum of each axis for every point:
+\begin{center}
+    $P_{min} = (\min(x_1, x_2, x_3, ..., x_n), \min(y_1, y_2, y_3, ..., y_n))$
+\end{center}
+
+Then we find the $\max$ bound of all 2D points with the same procedure, just using $\max$ function instead of $\min$:
+\begin{center}
+    $P_{max} = (\max(x_1, x_2, x_3, ..., x_n), \max(y_1, y_2, y_3, ..., y_n))$
+\end{center}
+
+As you can see, we are simply finding the $\min$ and $\max$ of each axis. Just like how we calculate for tight bounds for
+a regular tight bound in a number line!
+
+The reason why the result is actually two points $P_{min}$ and $P_{max}$ is because, these two points define an \textbf{axis-aligned bounding box}!
+
+\sgap
+For example, if we have a few points $(5, 0), (0, 2), (1, 9)$, then their tight bounds are:
+\begin{center}
+    $P_{min} = (\min(5, 0, 1), \min(0, 2, 9)) = (0, 0)$ and
+    $P_{max} = (\max(5, 0, 1), \max(0, 2, 9)) = (5, 9)$
+\end{center}
+
+The $5, 0, 1$ are the $x$ of all points, and $0, 2, 9$ are the $y$ of all points :3
+
+\sgap
+If we plot this on a graph in a graphing tool like desmos:
+\begin{center}
+    \includegraphics[width=13em, height=13em]{axis_aligned_bounding_box_2D_example}
+\end{center}
+
+\sgap
+Red are the points, and blue are the bound defining points we have calculated, if we draw a rectangle and shade the area in between these two blue points:
+\begin{center}
+    \includegraphics[width=13em, height=13em]{axis_aligned_bounding_box_2D_example_shaded}
+\end{center}
+
+Hopefully you can see all red points are included in this box formed by connecting the corners using the two calculated blue points!
+
+In fact, it is called \textbf{axis-aligned} because it is aligned with the $x$ and $y$ axis of this 2D plane :D
+
+\sgap
+Of course, this actually can be extended to any dimension! As long as you find the minimum and maximum of each axis respectively.
+
+
 
 
 
